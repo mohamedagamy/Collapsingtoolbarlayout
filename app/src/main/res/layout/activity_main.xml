@@ -15,10 +15,8 @@
   ~ limitations under the License.
 -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:background="#fff"
     android:layout_width="match_parent"
@@ -42,6 +40,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp">
+            <!--Gravity to top inside collapsing layout -->
             <include layout="@layout/profile_layout" />
 
             <androidx.appcompat.widget.Toolbar
@@ -52,7 +51,7 @@
                 android:gravity="center"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
-
+                <!--Gravity to bottom inside pinned toolbar-->
                 <include layout="@layout/toolbar_layout" />
 
             </androidx.appcompat.widget.Toolbar>
