@@ -13,12 +13,17 @@ import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_scrollable.*
+import kotlinx.android.synthetic.main.profile_layout.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var apiService: ApiService
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setSupportActionBar(toolbar)
         initViews()
     }
 
