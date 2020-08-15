@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.example.profiletask.Constants.Companion.IMAGE_LINK
 import com.example.profiletask.ui.adapter.ImagesAdapter
 import com.example.profiletask.R
+import com.example.profiletask.api.ApiService
 import com.example.profiletask.api.RetrofitBuilder
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,6 +15,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    lateinit var apiService: ApiService
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,12 +23,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initViews(){
+        apiService = RetrofitBuilder.getApiService()
         getUserInfo()
 
     }
 
     fun getUserMedia(){
-        val apiService = RetrofitBuilder.getApiService()
         val subscribe = apiService.getMediaInfo()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io()).doAfterTerminate {
@@ -51,7 +53,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getUserInfo(){
-        val apiService = RetrofitBuilder.getApiService()
         val subscribe = apiService.getUserInfo()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io()).doAfterTerminate {
